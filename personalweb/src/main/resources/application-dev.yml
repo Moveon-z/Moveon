@@ -1,0 +1,13 @@
+server:
+  port: 8081 #服务端口号
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.100.187.127:3306/personalweb?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: Mufeng0827.
+
+mybatis:
+  mapper-locations: classpath:mapper/*/*Mapper.xml
+  type-aliases-package: com.moveon.personalweb.entity
