@@ -3,6 +3,8 @@ package com.moveon.personalweb.dao.user;
 import com.moveon.personalweb.entity.user.User;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * @ClassName UserDao
  * @Description TODO
@@ -12,6 +14,12 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 @Mapper
 public interface UserDao {
+
+    /**
+     * 获取所有用户信息
+     * @return
+     */
+    List<User> getAllUsers();
 
     /**
      * 通过用户名和用户密码获取用户信息
