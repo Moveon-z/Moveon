@@ -12,6 +12,10 @@
     </select>
 
     <insert id="registerUser" keyProperty="id" parameterType="com.moveon.personalweb.entity.user.User">
-        insert into m_user() value(#{id},#{username},#{password},#{name},#{email},#{phone})
+        insert into m_user() values(#{id},#{username},#{password},#{name},#{email},#{phone},#{createDate},#{updateDate},#{isDeleted})
     </insert>
+
+    <select id="getUserById" resultType="com.moveon.personalweb.entity.user.User">
+        select * from m_user where id = #{id}
+    </select>
 </mapper>

@@ -3,6 +3,7 @@ package com.moveon.personalweb.entity.user;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @ClassName User
@@ -20,4 +21,7 @@ public class User implements Serializable {
     private String name;
     private String email;
     private Integer phone;
+    private Date createDate;
+    private Date updateDate;
+    private String isDeleted;
 }

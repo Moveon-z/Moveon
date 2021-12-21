@@ -35,4 +35,11 @@ public interface UserDao {
      * @return
      */
     int registerUser(User user);
+
+    /**
+     * 通过用户id获取除密码外的用户信息
+     * @param userId
+     * @return
+     */
+    User getUserById(String userId);
 }

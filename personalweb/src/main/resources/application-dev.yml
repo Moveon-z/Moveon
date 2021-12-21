@@ -1,5 +1,5 @@
 server:
-  port: 8080 #服务端口号
+  port: 8081 #服务端口号
 
 spring:
   datasource:
@@ -11,3 +11,5 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*/*Mapper.xml
   type-aliases-package: com.moveon.personalweb.entity
+  configuration:
+    map-underscore-to-camel-case: true

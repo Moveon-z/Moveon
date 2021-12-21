@@ -34,4 +34,8 @@ public class UserService {
         return userDao.registerUser(user);
     }
 
+    public User getUserById(String userId) {
+        return userDao.getUserById(userId);
+    }
+
 }

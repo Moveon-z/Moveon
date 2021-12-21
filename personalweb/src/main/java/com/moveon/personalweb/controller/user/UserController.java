@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -53,6 +54,10 @@ public class UserController {
     @PostMapping("/registerUser")
     public ResultMap registerUser(@RequestBody User user) {
         user.setId(UUIDUtils.createID());
+        Date now = new Date();
+        user.setCreateDate(now);
+        user.setUpdateDate(now);
+        user.setIsDeleted("00");
         int i = userService.registerUser(user);
         if (i == 1) {
             return ResultMap.buildSuccessResult("注册成功",i);

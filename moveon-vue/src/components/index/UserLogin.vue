@@ -36,9 +36,10 @@
     },
     methods: {
       onSubmit() {
-        this.$http.post('/user/getUser', this.form)
+        this.$http.get('/user/getUser', {params: {username: this.form.username, password: this.form.password}})
           .then(res => {
             if (res.data.type === 'success') {
+              sessionStorage.setItem("globalUserId", res.data.data.id)
               sessionStorage.setItem("name",res.data.data.name)
               this.$router.push({path: '/index'})
             }else {
