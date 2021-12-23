@@ -12,7 +12,6 @@ import './assets/global.css'
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
-axios.defaults.baseURL='/api';
 Vue.use(ElementUI);
 Vue.use(VueAxios,axios)
 
@@ -23,3 +22,7 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+export default{
+  url: "/api"
+}

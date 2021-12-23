@@ -25,6 +25,7 @@
 </template>
 
 <script>
+  import api from '../../request/api';
   export default {
     data() {
       return {
@@ -36,17 +37,27 @@
     },
     methods: {
       onSubmit() {
-        this.$http.get('/user/getUser', {params: {username: this.form.username, password: this.form.password}})
-          .then(res => {
-            if (res.data.type === 'success') {
-              sessionStorage.setItem("globalUserId", res.data.data.id)
-              sessionStorage.setItem("name",res.data.data.name)
-              this.$router.push({path: '/index'})
-            }else {
-              this.$message.error("用户名或密码错误,请重新输入！")
-              return
-            }
-          })
+        api.getUser(this.form.username,this.form.password).then(res => {
+          if (res.data.type === 'success') {
+            sessionStorage.setItem("globalUserId", res.data.data.id)
+            sessionStorage.setItem("name",res.data.data.name)
+            this.$router.push({path: '/index'})
+          }else {
+            this.$message.error("用户名或密码错误,请重新输入！")
+            return
+          }
+        })
+        // this.$http.get('/user/getUser', {params: {username: this.form.username, password: this.form.password}})
+        //   .then(res => {
+        //     if (res.data.type === 'success') {
+        //       sessionStorage.setItem("globalUserId", res.data.data.id)
+        //       sessionStorage.setItem("name",res.data.data.name)
+        //       this.$router.push({path: '/index'})
+        //     }else {
+        //       this.$message.error("用户名或密码错误,请重新输入！")
+        //       return
+        //     }
+        //   })
       },
       goRegister() {
         this.$router.push({path: '/register'})
