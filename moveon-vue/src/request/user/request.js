@@ -1,4 +1,4 @@
-import {get , post} from "./http";
+import {get , post} from "../http";
 
 export default {
   getAllUsers() {
@@ -6,6 +6,9 @@ export default {
   },
   getUser(username, password) {
     return get('user/getUser', {username: username, password: password})
+  },
+  registerUser(entity) {
+    return post('user/registerUser', entity)
   }
 }
 

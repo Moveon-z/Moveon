@@ -24,6 +24,7 @@
 </template>
 
 <script>
+  import api from "../../request/user/request";
   export default {
     name: "UserRegister",
     data() {
@@ -39,10 +40,16 @@
     },
     methods: {
       registerUser() {
-        this.$http.post('/user/registerUser',this.form)
-          .then(res=>{
-            console.log(res)
-          })
+        api.registerUser(this.form)
+        .then(res => {
+          if (res.type === 'success') {
+            this.$message.info("注册成功!")
+            this.$router.push({path: '/login'})
+          }
+        }).catch(err => {
+          this.$message.error("注册失败" + err.message)
+        })
+        // this.$http.post('user/registerUser', {param: {user: this.form}})
       }
     }
   }

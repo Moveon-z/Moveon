@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import api from '../../request/api';
+  import api from '../../request/user/request';
   export default {
     data() {
       return {
@@ -38,9 +38,10 @@
     methods: {
       onSubmit() {
         api.getUser(this.form.username,this.form.password).then(res => {
-          if (res.data.type === 'success') {
-            sessionStorage.setItem("globalUserId", res.data.data.id)
-            sessionStorage.setItem("name",res.data.data.name)
+          if (res.type === 'success') {
+            this.$message.info("登录成功")
+            sessionStorage.setItem("globalUserId", res.data.id)
+            sessionStorage.setItem("name",res.data.name)
             this.$router.push({path: '/index'})
           }else {
             this.$message.error("用户名或密码错误,请重新输入！")
