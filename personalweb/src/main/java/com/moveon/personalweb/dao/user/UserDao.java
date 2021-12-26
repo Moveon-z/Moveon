@@ -42,4 +42,11 @@ public interface UserDao {
      * @return
      */
     User getUserById(String userId);
+
+    /**
+     * 通过用户名获取用户个数(用于判断该用户名是否已被占用)
+     * @param username
+     * @return
+     */
+    int getUserByUsername(String username);
 }

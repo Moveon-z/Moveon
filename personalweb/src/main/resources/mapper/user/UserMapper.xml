@@ -18,4 +18,8 @@
     <select id="getUserById" resultType="com.moveon.personalweb.entity.user.User">
         select * from m_user where id = #{id}
     </select>
+
+    <select id="getUserByUsername" resultType="java.lang.Integer">
+        select * from m_user where username = #{username}
+    </select>
 </mapper>

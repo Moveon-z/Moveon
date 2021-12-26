@@ -38,4 +38,8 @@ public class UserService {
         return userDao.getUserById(userId);
     }
 
+    public int getUserByUsername(String username) {
+        return userDao.getUserByUsername(username);
+    }
+
 }

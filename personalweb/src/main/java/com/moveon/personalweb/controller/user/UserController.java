@@ -53,6 +53,10 @@ public class UserController {
 
     @PostMapping("/registerUser")
     public ResultMap registerUser(@RequestBody User user) {
+        int count = userService.getUserByUsername(user.getUsername());
+        if (count >= 1) {
+            return ResultMap.buildFailureResult("该用户名已被注册,请重新输入");
+        }
         user.setId(UUIDUtils.createID());
         Date now = new Date();
         user.setCreateDate(now);
